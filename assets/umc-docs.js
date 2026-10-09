@@ -5,9 +5,9 @@
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => [...r.querySelectorAll(s)];
     const DOCS = [
-        { id: 'documento-tecnico', grupo: 'principal', titulo: 'Documento técnico y metodológico de las UMC', desc: 'El modelo completo: antecedentes, reglas, ruta formativa y seguimiento.', archivo: 'documento-tecnico-umc.pdf', pags: 66 },
-        { id: 'anexo-a', grupo: 'anexos', letra: 'A', titulo: 'Plantilla de estatutos y ruta de formalización', desc: 'Estatutos de la UMC como acuerdo privado y pasos para formalizarse.', archivo: 'anexo-a-estatutos.pdf', pags: 15 },
-        { id: 'anexo-b', grupo: 'anexos', letra: 'B', titulo: 'Modelo de reglamento interno', desc: 'Reglamento para llenar con lo votado en la Jornada 2.', archivo: 'anexo-b-reglamento.pdf', pags: 7 },
+        { id: 'documento-tecnico', grupo: 'principal', titulo: 'Documento técnico y metodológico de las UMC', desc: 'El modelo completo: antecedentes, reglas, ruta formativa y seguimiento.', archivo: 'documento-tecnico-umc.pdf', pags: 30 },
+        { id: 'anexo-a', grupo: 'anexos', letra: 'A', titulo: 'Plantilla de estatutos y ruta de formalización', desc: 'Estatutos de la UMC como acuerdo privado y pasos para formalizarse.', archivo: 'anexo-a-estatutos.pdf', pags: 6 },
+        { id: 'anexo-b', grupo: 'anexos', letra: 'B', titulo: 'Modelo de reglamento interno', desc: 'Reglamento para llenar con lo votado en la Jornada 2.', archivo: 'anexo-b-reglamento.pdf', pags: 3 },
         { id: 'anexo-c', grupo: 'anexos', letra: 'C', titulo: 'Infografías de la UMC', desc: 'Cinco piezas de una página para compartir.', archivo: 'anexo-c-infografias.pdf', pags: 5 },
         { id: 'presentacion', grupo: 'anexos', letra: 'P', titulo: 'Presentación · Acceso a financiamiento', desc: 'Diapositivas del pilar de acceso a financiamiento del CIC.', archivo: 'presentacion-acceso-financiamiento.pdf', pags: 12 },
         { id: 'j1-guia', grupo: 'j1', titulo: 'Ficha técnica y guía metodológica', desc: 'Paso a paso de la Jornada 1 · Presentación.', archivo: 'jornada1-guia.pdf', pags: 21 },
