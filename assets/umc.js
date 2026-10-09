@@ -9,10 +9,10 @@
     // Rellena la parte recorrida de los deslizadores
     const pintarRango = (r) => r.style.setProperty('--p', `${((r.value - r.min) / (r.max - r.min)) * 100}%`);
 
-    // 01 · La plata que se va y la plata que se queda (interés simple, ilustrativo)
+    // 01 · Costo del crédito: gota a gota frente a una UMC (interés simple, ilustrativo)
     const monto = $('#cmp-monto'), meses = $('#cmp-meses');
     if (monto && meses) {
-        const GOTA = 0.20, UMC = 0.01, FONDO = 0.005;
+        const GOTA = 0.20, UMC = 0.01, FONDO = 0.01;
         const comparar = () => {
             const m = Number(monto.value), n = Number(meses.value);
             const gota = m * GOTA * n;
@@ -85,9 +85,10 @@
     // 06 · Semáforo de usura: interés anticipado + aporte al fondo, cuotas iguales solo a capital
     const sem = $('#semaforo');
     if (sem) {
-        const USURA = 29.24, INFLACION = 6.24, FONDO = 0.005, ESCALA = 50;
+        // Valores de referencia acordados con Emprende Ahora: 1 % mensual anticipado + 1 % al fondo de emergencias
+        const USURA = 29.24, INFLACION = 6.24, FONDO = 0.01, ESCALA = 50;
         const campoMonto = $('#sem-monto'), campoMeses = $('#sem-meses'), campoTasa = $('#sem-tasa');
-        let porAño = 24;
+        let porAño = 12;
         const leerMonto = () => Number(String(campoMonto.value).replace(/\D/g, '')) || 0;
         // Tasa por periodo que iguala lo recibido con las cuotas (bisección)
         const tasaPeriodo = (recibido, cuota, k) => {

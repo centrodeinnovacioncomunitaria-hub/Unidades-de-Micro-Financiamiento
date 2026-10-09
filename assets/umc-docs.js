@@ -41,7 +41,7 @@
             <button type="button" class="bib-doc" data-ver="${d.id}">
                 <span class="bib-icono" aria-hidden="true">${d.letra || d.grupo.slice(1)}</span>
                 <span class="bib-texto"><small>${GRUPOS[d.grupo].nombre}</small><b>${d.titulo}</b><span>${d.desc}</span></span>
-                <span class="bib-meta"><span>${d.pags} pág.</span><span class="bib-ver"><svg width="16" height="16" aria-hidden="true"><use href="#i-ojo"/></svg>Ver</span></span>
+                <span class="bib-meta"><span>${d.pags} pág.</span><span class="bib-ver"><svg class="ic-ojo" width="16" height="16" aria-hidden="true"><use href="#i-ojo"/></svg><svg class="ic-candado" width="16" height="16" aria-hidden="true"><use href="#i-candado"/></svg>Ver</span></span>
             </button>
         </li>`).join('');
     const filtros = $$('.bib-filtro');
@@ -141,7 +141,7 @@
         if (!visor.open) visor.showModal();
         cuerpo.scrollTop = 0;
         document.body.classList.add('visor-abierto');
-        if (!lib) { aviso('No se pudo cargar el visor. Revisa tu conexión.'); return; }
+        if (!lib) { aviso('No se pudo cargar el visor. Verifique la conexión a internet.'); return; }
         try {
             if (pdf) { pdf.destroy(); pdf = null; }
             const tarea = lib.getDocument({ url: `assets/docs/${d.archivo}`, isEvalSupported: false });
@@ -156,7 +156,12 @@
     };
     document.addEventListener('click', (e) => {
         const b = e.target.closest('[data-ver]');
-        if (b) { e.preventDefault(); abrir(b.dataset.ver); }
+        if (!b) return;
+        e.preventDefault();
+        // Los materiales se habilitan después del cuestionario de acceso
+        const acceso = window.UMCAcceso;
+        if (acceso && !acceso.listo()) acceso.pedir(() => abrir(b.dataset.ver));
+        else abrir(b.dataset.ver);
     });
     if (!visor) return;
     const cerrar = () => visor.close();
